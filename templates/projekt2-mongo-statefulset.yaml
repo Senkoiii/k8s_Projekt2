@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: projekt2-mongo
+spec:
+  serviceName: projekt2-mongodb
+  replicas: 3
+  selector:
+    matchLabels:
+      app: projekt2-mongo
+  template:
+    metadata:
+      labels:
+        app: projekt2-mongo
+    spec:
+      containers:
+        - name: projekt2-mongo
+          image: mongo:latest
+          command:
+            - mongod
+            - "--replSet"
+            - "rs0"
+            - "--bind_ip_all"
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: projekt2-mongo-persistent-storage
+              mountPath: /data/db
+  volumeClaimTemplates:
+    - metadata:
+        name: projekt2-mongo-persistent-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 5Gi
+
+
+# Dieses StatefulSet startet drei MongoDB-Pods mit jeweils eigener, fester Identität.
+# Es sorgt dafür, dass jeder Pod einen stabilen Namen und eigenen Speicher bekommt.
+# Das ist wichtig, damit das MongoDB-ReplikaSet korrekt funktionieren kann.
+# Die Pods teilen sich über den Headless-Service einen gemeinsamen DNS-Namen
+# und können sich dadurch gegenseitig im Cluster finden.
+# Der Speicher wird dauerhaft angelegt, damit die Daten auch bei einem Pod-Neustart erhalten bleiben.
