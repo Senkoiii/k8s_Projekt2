@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: projekt2-mongo-init
+spec:
+  template:
+    spec:
+      containers:
+        - name: projekt2-mongo-init-container
+          image: mongo:5.0
+          volumeMounts:
+            - name: projekt2-init-volume
+              mountPath: /scripts
+          command:
+            - /bin/bash
+            - /scripts/init-replica.sh
+      restartPolicy: OnFailure
+      volumes:
+        - name: projekt2-init-volume
+          configMap:
+            name: projekt2-init-script
+            defaultMode: 0755
+
+
+# Dieser Job wird einmalig ausgeführt, um das MongoDB-ReplikaSet im Cluster zu initialisieren.
+# Er startet einen Container, der ein Bash-Skript ausführt, welches alle drei MongoDB-Pods verbindet
+# und das ReplikaSet korrekt einrichtet.
+# Das Skript liegt in einer ConfigMap und wird beim Start in den Container gemountet.
+# Falls etwas schiefgeht, wird der Job automatisch neu gestartet solange, bis er erfolgreich abgeschlossen ist.

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: projekt2-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: projekt2-web
+  template:
+    metadata:
+      labels:
+        app: projekt2-web
+    spec:
+      containers:
+        - name: projekt2-web-container
+          image: k8s_mongodb_projekt2_web:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3000
+          env:
+            - name: MONGO_HOSTS
+              value: "projekt2-mongo-0,projekt2-mongo-1,projekt2-mongo-2"
+            - name: MONGO_URL
+              value: "mongodb://$(MONGO_HOSTS).projekt2-mongodb.default.svc.cluster.local:27017/?replicaSet=rs0"
+
+# Dieses Deployment startet die Web-App als Pod im Cluster.
+# Mit 'replicas: 1' läuft standardmässig eine Instanz, man kann die Anzahl aber erhöhen,
+# um Last zu verteilen oder Ausfälle abzufangen.
+# Die App verwendet ein eigenes Docker-Image und bekommt über Umgebungsvariablen
+# die Infos zur MongoDB-Replika mitgegeben, damit sie sich korrekt verbinden kann.
