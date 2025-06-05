@@ -29,14 +29,14 @@ kubectl create configmap projekt2-init-script --from-file=init-replica.sh
 helm install projekt2-mongodb .  
 
 **Überprüfen:**<br>
-helm list
-kubectl get pods<br>
-kubectl get jobs<br>
-kubectl get svc
-kubectl logs job/projekt2-mongo-init <br><br>
+`helm list`
+`kubectl get pods`<br>
+`kubectl get jobs`<br>
+`kubectl get svc`
+`kubectl logs job/projekt2-mongo-init` <br><br>
 
 
-Warten, bis bei kubectl logs job/projekt2-mongo-init alle 3 pods erfolgreich erstellt wurden<br><br>
+Warten, bis bei `kubectl logs job/projekt2-mongo-init` alle 3 pods erfolgreich erstellt wurden<br><br>
 
 Jetzt ist die App per http://localhost:3000 erreichbar und zeigt alle Filme in der Datenbank.<br>
 Mit http://localhost:3000/movies/add?title=Oppenheimer lassen sich Filme hinzufügen.
