@@ -2,7 +2,7 @@
 
 **Repository klonen**<br>
 ```bash
-git clone https://github.com/Senkoiii/k8s_Projekt2/tree/main/k8s_Projekt2
+git clone https://github.com/Senkoiii/k8s_Projekt2
 ```
 
 **Kubernetes-Cluster erstellen:**<br>
