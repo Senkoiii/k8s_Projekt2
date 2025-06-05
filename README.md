@@ -28,7 +28,7 @@ rm -rf tests/
 cp k8s_Projekt2/templates/*.yaml projekt2-mongodb/templates/
 ```
 
-**Docker-Image bauen: (k8s_Projekt2/k8s_Projekt2/web)**<br>
+**Docker-Image bauen: (k8s_Projekt2/web)**<br>
 ```bash
 docker build -t k8s_mongodb_projekt2_web:latest .
 ```
@@ -38,7 +38,7 @@ docker build -t k8s_mongodb_projekt2_web:latest .
 k3d image import k8s_mongodb_projekt2_web:latest -c projekt2-mongo-cluster
 ```
 
-**Configmap erstellen: (/pfad wo init drin)**
+**Configmap erstellen: (/k8s_Projekt2)**
 
 ```bash
 kubectl create configmap projekt2-init-script --from-file=init-replica.sh
