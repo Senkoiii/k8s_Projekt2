@@ -13,7 +13,7 @@ k3d cluster create projekt2-mongo-cluster --servers 1 --agents 2 -p "3000:3000@l
 **Helm-Chart erstellen: (innerhalb der geklonten Repository)**<br>
 ```bash
 helm create projekt2-mongodb
-cd projekt2-mongodb-project
+cd projekt2-mongodb
 ```
 
 **Unnötige Default Dateien entfernen:**<br>
