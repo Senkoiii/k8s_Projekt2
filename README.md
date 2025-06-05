@@ -1,16 +1,16 @@
 # k8s_Projekt2 - Anleitung
 
-**Repository ziehen**<br>
+**Repository klonen**<br>
 ```bash
 git clone https://github.com/Senkoiii/k8s_Projekt2/tree/main/k8s_Projekt2
 ```
 
-**Cluster erstellen:**<br>
+**Kubernetes-Cluster erstellen:**<br>
 ```bash
 k3d cluster create projekt2-mongo-cluster --servers 1 --agents 2 -p "3000:3000@loadbalancer"
 ```
 
-**Helm erstellen: (ausserhalb der Repository)**<br>
+**Helm-Chart erstellen: (innerhalb der geklonten Repository)**<br>
 ```bash
 helm create projekt2-mongodb
 cd projekt2-mongodb-project
@@ -23,9 +23,12 @@ cd templates
 rm -rf tests/
 ```
 
+**YAML-Files aus Repository in Helm-Chart kopieren**
+```bash
+cp k8s_Projekt2/templates/*.yaml projekt2-mongodb/templates/
+```
 
-
-**Image bauen: (dafür muss man im /projekt2-mongodb/web sein)**<br>
+**Docker-Image bauen: (dafür muss man im /projekt2-mongodb/web sein)**<br>
 ```bash
 docker build -t k8s_mongodb_projekt2_web:latest .
 ```
@@ -41,35 +44,51 @@ k3d image import k8s_mongodb_projekt2_web:latest -c projekt2-mongo-cluster
 kubectl create configmap projekt2-init-script --from-file=init-replica.sh
 ```
 
-**Helm installieren:**
+**Helm-Chart installieren:**
 ```bash
 helm install projekt2-mongodb .
 ``` 
+<br>
 
-**Überprüfen:**<br>
+**Überprüfen:** 
+
+<br>
+
+**Zeigt alle installierten Helm-Charts im Cluster**
 ```bash
 helm list
 ```
+**Listet alle laufenden Pods im Cluster auf**
 ```bash
 kubectl get pods
 ```
+**Zeigt abgeschlossene oder laufende Kubernetes-Jobs**
 ```bash
 kubectl get jobs
 ```
+ **Zeigt alle Services, inklusive Cluster-IP und Ports**
 ```bash
 kubectl get svc
 ```
+**Log des Init-Jobs öffnen**
 ```bash
 kubectl logs job/projekt2-mongo-init
 ```
+<br>
+
+> **ACHTUNG:** Warte im Log des Init-Jobs, bis das ReplikaSet erfolgreich gestartet wurde und alle 3 MongoDB-Pods verfügbar sind.
 <br><br>
 
+Filme anzeigen:
+```bash
+http://localhost:3000
+```
 
-Warten, bis bei `kubectl logs job/projekt2-mongo-init` alle 3 pods erfolgreich erstellt wurden<br><br>
+Filme hinzufügen
 
-Jetzt ist die App per `http://localhost:3000` erreichbar und zeigt alle Filme in der Datenbank.<br>
-Mit `http://localhost:3000/movies/add?title=Oppenheimer` lassen sich Filme hinzufügen.
-
+```bash
+http://localhost:3000/movies/add?title=Oppenheimer
+```
 
 
 
