@@ -80,12 +80,12 @@ kubectl logs job/projekt2-mongo-init
 > **ACHTUNG:** Warte im Log des Init-Jobs, bis das ReplikaSet erfolgreich gestartet wurde und alle 3 MongoDB-Pods verfügbar sind.
 <br><br>
 
-Filme anzeigen:
+**Filme anzeigen:**
 ```bash
 http://localhost:3000
 ```
 
-Filme hinzufügen
+**Filme hinzufügen:**
 
 ```bash
 http://localhost:3000/movies/add?title=Oppenheimer
