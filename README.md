@@ -28,7 +28,7 @@ rm -rf tests/
 cp k8s_Projekt2/templates/*.yaml projekt2-mongodb/templates/
 ```
 
-**Docker-Image bauen: (dafür muss man im /projekt2-mongodb/web sein)**<br>
+**Docker-Image bauen: (k8s_Projekt2/k8s_Projekt2/web)**<br>
 ```bash
 docker build -t k8s_mongodb_projekt2_web:latest .
 ```
