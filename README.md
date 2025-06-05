@@ -78,7 +78,7 @@ kubectl logs job/projekt2-mongo-init
 <br>
 
 > **ACHTUNG:** Warte im Log des Init-Jobs, bis das ReplikaSet erfolgreich gestartet wurde und alle 3 MongoDB-Pods verfügbar sind.
-<br><br>
+
 
 **Filme anzeigen:**
 ```bash
