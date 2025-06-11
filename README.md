@@ -1,4 +1,9 @@
 # k8s_Projekt2 - Anleitung
+**als root user anmelden**
+
+```bash
+su
+```
 
 **Repository klonen**<br>
 ```bash
