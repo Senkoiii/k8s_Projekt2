@@ -18,7 +18,7 @@ git clone https://github.com/Senkoiii/k8s_Projekt2
 k3d cluster create projekt2-mongo-cluster --servers 1 --agents 2 -p "3000:3000@loadbalancer"
 ```
 
-**Helm-Chart erstellen: (innerhalb der geklonten Repository)**<br>
+**Helm-Chart erstellen:**<br>
 ```bash
 helm create projekt2-mongodb
 cd projekt2-mongodb
