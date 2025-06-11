@@ -1,4 +1,7 @@
 # k8s_Projekt2 - Anleitung
+
+> **ACHTUNG:** Um das Projekt zu realisieren müssen **helm** und **k3d** installiert werden und ein funktionierendes WSL bzw. eine Linux Distro bestehen.
+
 **als root user anmelden**
 
 ```bash
@@ -48,7 +51,8 @@ cd k8s_Projekt2/web
 docker build -t k8s_mongodb_projekt2_web:latest .
 ```
 
-**Image in Cluster kopieren: **<br>
+**Image in Cluster kopieren:**
+<br>
 ```bash
 k3d image import k8s_mongodb_projekt2_web:latest -c projekt2-mongo-cluster
 ```
@@ -93,7 +97,7 @@ kubectl logs job/projekt2-mongo-init
 ```
 <br>
 
-> **ACHTUNG:** Warte im Log des Init-Jobs, bis das ReplikaSet erfolgreich gestartet wurde und alle 3 MongoDB-Pods verfügbar sind.
+> **ACHTUNG:** Warte, bis die ReplikaSets erfolgreich durchgelaufen sind und alle 3 MongoDB-Pods verfügbar sind.
 
 
 **Filme anzeigen:**
