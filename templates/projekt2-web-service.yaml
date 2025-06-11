@@ -13,4 +13,4 @@ spec:
 
 # Dieser Service sorgt dafür, dass man die Web-App über Port 3000 von aussen erreichen kann.
 # Weil der Typ 'LoadBalancer' verwendet wird, leitet Kubernetes (bzw. k3d) Anfragen automatisch an die laufenden Web-Pods weiter.
-# Wenn mehrere Instanzen der App laufen, verteilt der Service die Anfragen gleichmässig – das entlastet einzelne Pods und sorgt für Stabilität.
+# Wenn mehrere Instanzen der App laufen, verteilt der Service die Anfragen gleichmässig. Das entlastet einzelne Pods und sorgt für Stabilität.
