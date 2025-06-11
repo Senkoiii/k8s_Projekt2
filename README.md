@@ -25,17 +25,18 @@ rm -rf tests/
 
 **YAML-Files aus Repository in Helm-Chart kopieren**
 ```bash
-cd ../../templates
-sudo cp *.yaml ../projekt2-mongodb/templates/
+exit
+cp ~/k8s_Projekt2/templates/*.yaml ~/projekt2-mongodb/templates/
 ```
 > **ACHTUNG:** Dafür muss man aus dem root@ gehen (exit) damit man es kopieren kann. Danach kann man wieder mit `su` zurück ins root@
 > 
 **Docker-Image bauen: (k8s_Projekt2/web)**<br>
 ```bash
+cd k8s_Projekt2/web
 docker build -t k8s_mongodb_projekt2_web:latest .
 ```
 
-**Image in Cluster kopieren: (Im Cluster)**<br>
+**Image in Cluster kopieren: **<br>
 ```bash
 k3d image import k8s_mongodb_projekt2_web:latest -c projekt2-mongo-cluster
 ```
@@ -43,11 +44,13 @@ k3d image import k8s_mongodb_projekt2_web:latest -c projekt2-mongo-cluster
 **Configmap erstellen: (/k8s_Projekt2)**
 
 ```bash
+cd ..
 kubectl create configmap projekt2-init-script --from-file=init-replica.sh
 ```
 
 **Helm-Chart installieren:**
 ```bash
+cd ~/projekt2-mongodb
 helm install projekt2-mongodb .
 ``` 
 <br>
