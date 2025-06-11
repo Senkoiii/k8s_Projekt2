@@ -32,7 +32,7 @@ rm -rf tests/
 ```
 
 **YAML-Files aus Repository in Helm-Chart kopieren**
-> **ACHTUNG:** Dafür muss man aus dem root@ gehen (exit) damit man es kopieren kann. Danach kann man wieder mit `su` zurück ins root@
+> **ACHTUNG:** Dafür muss man aus dem root gehen (exit) damit man es kopieren kann. Danach kann man wieder mit `su` zurück ins root
 > 
 
 ```bash
