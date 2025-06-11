@@ -25,7 +25,7 @@ rm -rf tests/
 
 **YAML-Files aus Repository in Helm-Chart kopieren**
 ```bash
-cd k8s_Projekt2
+cd ../..
 sudo cp k8s_Projekt2/templates/*.yaml projekt2-mongodb/templates/
 ```
 > **ACHTUNG:** Dafür muss man aus dem root@ gehen (exit) damit man es kopieren kann. Danach kann man wieder mit `su` zurück ins root@
