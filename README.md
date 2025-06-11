@@ -41,7 +41,8 @@ sudo cp ~/k8s_Projekt2/templates/*.yaml ~/projekt2-mongodb/templates/
 ```bash
 su
 ```
-**Docker-Image bauen: (k8s_Projekt2/web)**<br>
+**Docker-Image bauen: (k8s_Projekt2/web)**
+<br>
 ```bash
 cd k8s_Projekt2/web
 docker build -t k8s_mongodb_projekt2_web:latest .
@@ -61,7 +62,7 @@ kubectl create configmap projekt2-init-script --from-file=init-replica.sh
 
 **Helm-Chart installieren:**
 ```bash
-cd ~/projekt2-mongodb
+cd ../projekt2-mongodb
 helm install projekt2-mongodb .
 ``` 
 <br>
